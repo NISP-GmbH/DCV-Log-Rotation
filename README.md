@@ -1,6 +1,6 @@
-# dcv-log-rotation
+# DCV-Log-Rotation
 
-The clipboard audit log file will be rotated only with DCV Server restart. The file rotation based on date or size is currently not officialy supported. Those improvements already are under DCV roadmap, but we would like to offer a workaround using overlayfs to make log rotation possible without restart DCV Server. This script uses OverlayFS and a rotate script to accomplish that.
+The DCV clipboard audit log file will be rotated only with DCV Server restart. The file rotation based on date or size is currently not officialy supported. Those improvements are in the DCV roadmap, in the meantime we would like to offer a workaround using overlayfs to make log rotation possible without restart of the DCV Server. This script uses OverlayFS and a rotate script to accomplish that.
 
 ## How to install
 
