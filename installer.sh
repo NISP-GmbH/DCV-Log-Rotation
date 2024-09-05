@@ -137,6 +137,7 @@ chmod +x /usr/local/bin/rotate_dcv_logs.sh
 
 # Set up OverlayFS
 mkdir -p /var/log/dcv_lower /var/log/dcv_upper /var/log/dcv_work /var/log/dcv_merged
+chown dcv:dcv /var/log/dcv_lower /var/log/dcv_upper /var/log/dcv_work /var/log/dcv_merged
 
 # Add OverlayFS mount to /etc/fstab
 if ! grep -q "/var/log/dcv_merged" /etc/fstab; then
@@ -152,6 +153,8 @@ then
     mv /var/log/dcv/* /var/log/dcv_upper/
     rmdir /var/log/dcv
     ln -s /var/log/dcv_merged /var/log/dcv
+    chown dcv:dcv /var/log/dcv_merged
+    chmod 0750 /var/log/dcv_merged
 fi
 
 # Create systemd service for log rotation
@@ -163,6 +166,8 @@ After=dcvserver.service
 [Service]
 Type=oneshot
 ExecStart=/usr/local/bin/rotate_dcv_logs.sh
+User=dcv
+Group=dcv
 
 [Install]
 WantedBy=multi-user.target

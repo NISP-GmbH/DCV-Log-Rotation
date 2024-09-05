@@ -46,6 +46,8 @@ echo "Removed OverlayFS entry from /etc/fstab"
 if [ -L "/var/log/dcv" ]; then
     rm /var/log/dcv
     mkdir /var/log/dcv
+    chown dcv:dcv /var/log/dcv
+    chmod 0750 /var/log/dcv
     echo "Restored original /var/log/dcv directory"
 fi
 
